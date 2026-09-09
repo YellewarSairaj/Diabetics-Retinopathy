@@ -1,0 +1,25 @@
+==================================================
+RETINAX AI — VALIDATION SET CLASSIFICATION REPORT
+==================================================
+
+Total Validation Samples : 550
+Overall Accuracy         : 39.82%
+Quadratic Weighted Kappa : 0.1915
+Macro ROC-AUC            : 58.73%
+
+Macro Precision          : 21.59%
+Macro Recall             : 22.91%
+Macro F1-Score           : 21.95%
+
+Weighted Precision       : 35.65%
+Weighted Recall          : 39.82%
+Weighted F1-Score        : 37.45%
+
+--------------------------------------------------
+PER-CLASS DETAILED BREAKDOWN:
+--------------------------------------------------
+Class 0 (No DR)             - Precision: 52.84%, Recall: 58.30%, F1: 55.44%
+Class 1 (Mild)              - Precision: 5.00%, Recall: 1.79%, F1: 2.63%
+Class 2 (Moderate)          - Precision: 26.42%, Recall: 34.00%, F1: 29.74%
+Class 3 (Severe)            - Precision: 0.00%, Recall: 0.00%, F1: 0.00%
+Class 4 (Proliferative DR)  - Precision: 23.68%, Recall: 23.68%, F1: 21.95%

@@ -1,0 +1,18 @@
+# Docker Ignore File
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.git/
+.gitignore
+.env
+.venv/
+env/
+venv/
+aptos2019-blindness-detection/train_images/
+aptos2019-blindness-detection/test_images/
+outputs/logs/
+.gemini/
+.vscode/
+.idea/
+*.log

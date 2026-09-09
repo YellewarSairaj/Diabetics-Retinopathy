@@ -1,0 +1,15 @@
+CANONICAL CLASS MAPPING AUDIT
+=============================
+0 -> No DR
+1 -> Mild
+2 -> Moderate
+3 -> Severe
+4 -> Proliferative DR
+
+[OK] dataset.py: Verified presence of standard severity names.
+[WARN] train.py: Verified presence of standard severity names.
+[WARN] model.py: Verified presence of standard severity names.
+[OK] eval_pipeline.py: Verified presence of standard severity names.
+[OK] run_eval_and_report.py: Verified presence of standard severity names.
+[WARN] backend/app.py: Verified presence of standard severity names.
+[OK] frontend/src/utils/constants.js: Verified presence of standard severity names.

@@ -1,0 +1,334 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   RETINAX AI — GLOBAL DESIGN SYSTEM
+   Dark Mode (default) | Light Mode | Glassmorphism
+   ============================================================ */
+
+/* ---------- CSS Custom Properties: Dark Theme (Default) ---------- */
+:root,
+[data-theme="dark"] {
+  --bg-primary: #060b18;
+  --bg-secondary: #0a1628;
+  --bg-card: rgba(13, 25, 50, 0.7);
+  --bg-card-hover: rgba(20, 37, 70, 0.85);
+  --bg-glass: rgba(255, 255, 255, 0.04);
+  --bg-glass-hover: rgba(255, 255, 255, 0.08);
+
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(59, 130, 246, 0.4);
+
+  --text-primary: #f0f4ff;
+  --text-secondary: #94a3b8;
+  --text-muted: #475569;
+
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --primary-glow: rgba(59, 130, 246, 0.25);
+
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --info: #06b6d4;
+
+  --dr-0: #22c55e;
+  --dr-1: #3b82f6;
+  --dr-2: #eab308;
+  --dr-3: #f97316;
+  --dr-4: #ef4444;
+
+  --navbar-bg: rgba(6, 11, 24, 0.85);
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 40px rgba(59, 130, 246, 0.15);
+
+  --orb-1: rgba(59, 130, 246, 0.12);
+  --orb-2: rgba(139, 92, 246, 0.10);
+}
+
+/* ---------- CSS Custom Properties: Light Theme ---------- */
+[data-theme="light"] {
+  --bg-primary: #f0f4ff;
+  --bg-secondary: #e8eef8;
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --bg-card-hover: rgba(255, 255, 255, 0.95);
+  --bg-glass: rgba(255, 255, 255, 0.6);
+  --bg-glass-hover: rgba(255, 255, 255, 0.8);
+
+  --border-color: rgba(0, 0, 0, 0.08);
+  --border-hover: rgba(59, 130, 246, 0.5);
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-glow: rgba(37, 99, 235, 0.2);
+
+  --navbar-bg: rgba(240, 244, 255, 0.9);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.08);
+  --shadow-glow: 0 0 40px rgba(37, 99, 235, 0.08);
+
+  --orb-1: rgba(59, 130, 246, 0.08);
+  --orb-2: rgba(139, 92, 246, 0.06);
+}
+
+/* ---------- Base Reset ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+/* ---------- Ambient Glow Orbs ---------- */
+.glow-orb {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(80px);
+  animation: orb-float 12s ease-in-out infinite;
+}
+
+.orb-1 {
+  width: 600px;
+  height: 600px;
+  background: var(--orb-1);
+  top: -200px;
+  right: -100px;
+}
+
+.orb-2 {
+  width: 500px;
+  height: 500px;
+  background: var(--orb-2);
+  bottom: -150px;
+  left: -100px;
+  animation-delay: -6s;
+}
+
+/* ---------- Glassmorphism Card ---------- */
+.glass-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-card);
+  padding: 24px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-card), var(--shadow-glow);
+}
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(59, 130, 246, 0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(59, 130, 246, 0.6); }
+
+/* ---------- Keyframes ---------- */
+@keyframes orb-float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-30px) scale(1.05); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(59, 130, 246, 0); }
+}
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Utility Classes ---------- */
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.08) 50%, transparent 100%);
+  background-size: 200% auto;
+  animation: shimmer 2s linear infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.status-dot-green {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--success);
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--success);
+  animation: pulse-glow 2s infinite;
+}
+
+.status-dot-red {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--danger);
+  border-radius: 50%;
+}
+
+/* ---------- Badge System ---------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.badge-0 { background: rgba(34,197,94,0.15); color: #22c55e; border: 1px solid rgba(34,197,94,0.3); }
+.badge-1 { background: rgba(59,130,246,0.15); color: #3b82f6; border: 1px solid rgba(59,130,246,0.3); }
+.badge-2 { background: rgba(234,179,8,0.15); color: #eab308; border: 1px solid rgba(234,179,8,0.3); }
+.badge-3 { background: rgba(249,115,22,0.15); color: #f97316; border: 1px solid rgba(249,115,22,0.3); }
+.badge-4 { background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); }
+
+/* ---------- Form Elements ---------- */
+.form-input {
+  width: 100%;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-family: 'Inter', sans-serif;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+
+.form-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-glow);
+}
+
+.form-input::placeholder {
+  color: var(--text-muted);
+}
+
+textarea.form-input {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* ---------- Page Transition Wrapper ---------- */
+.page-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Table Styles ---------- */
+.retina-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.retina-table thead tr {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.retina-table th {
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+}
+
+.retina-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.retina-table tbody tr {
+  transition: background 0.2s ease;
+}
+
+.retina-table tbody tr:hover {
+  background: var(--bg-glass);
+}
+
+/* ---------- Probability Bar ---------- */
+.prob-track {
+  height: 8px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.prob-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ---------- Dropzone ---------- */
+.dropzone-active {
+  border-color: var(--primary) !important;
+  background: rgba(59, 130, 246, 0.08) !important;
+  box-shadow: 0 0 0 3px var(--primary-glow) !important;
+}
+
+/* ---------- Report Paper ---------- */
+.report-paper {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 860px;
+  margin: 0 auto;
+  backdrop-filter: blur(20px);
+}
+
+[data-theme="light"] .report-paper {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 40px rgba(0,0,0,0.1);
+}
